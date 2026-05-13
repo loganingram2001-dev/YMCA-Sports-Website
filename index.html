@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YMCA Youth Sports Portal</title>
+    <style>
+        /* Based on theydc.org Brand Colors */
+        :root {
+            --y-blue: #0060A9;
+            --y-yellow: #FFB612;
+            --y-black: #231F20;
+            --y-gray: #E1E1E1;
+            --y-dark-gray: #444444;
+        }
+
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: #f4f4f4; color: var(--y-black); }
+        
+        /* Centered Header Layout */
+        header { 
+            background-color: white; 
+            padding: 20px 40px;
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            position: relative; 
+            border-bottom: 5px solid var(--y-blue);
+            height: 80px; 
+        }
+
+        .logo-img { 
+            height: 75px; 
+            width: auto; 
+            position: absolute; 
+            left: 40px; 
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .portal-title { 
+            color: var(--y-blue); 
+            font-size: 26px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            margin: 0;
+            letter-spacing: -0.5px;
+            text-align: center;
+        }
+
+        /* Navigation Bars */
+        .main-nav { 
+            background: var(--y-black); 
+            display: flex; 
+            justify-content: center;
+            border-bottom: 4px solid var(--y-yellow);
+        }
+        .main-nav button { 
+            background: none; border: none; color: white; padding: 18px 35px; 
+            cursor: pointer; font-size: 16px; font-weight: bold; text-transform: uppercase;
+            transition: background 0.3s;
+        }
+        .main-nav button:hover { background: #333; }
+        .main-nav button.active { background: var(--y-yellow); color: var(--y-black); }
+
+        #sport-selector { background: var(--y-dark-gray); display: flex; justify-content: center; }
+        #sport-selector button { 
+            font-size: 13px; padding: 12px 25px; color: #ccc; background: none; 
+            border: none; cursor: pointer; text-transform: uppercase; font-weight: bold; 
+        }
+        #sport-selector button.active { color: var(--y-yellow); }
+
+        .sub-nav { background: var(--y-gray); display: flex; justify-content: center; border-bottom: 1px solid #ccc; }
+        .sub-nav button { 
+            background: none; border: none; padding: 14px 25px; cursor: pointer; 
+            font-weight: 600; color: #555; text-transform: uppercase; font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+        .sub-nav button.active { color: var(--y-blue); border-bottom: 4px solid var(--y-blue); margin-bottom: -1px; }
+
+        /* Container & Content */
+        .container { max-width: 1000px; margin: 30px auto; background: white; padding: 40px; border-radius: 4px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        .resource-card { background: #fcfcfc; border-left: 6px solid var(--y-yellow); padding: 20px; margin-bottom: 20px; border: 1px solid #eee; }
+        h2 { color: var(--y-blue); text-transform: uppercase; border-bottom: 2px solid #EEE; padding-bottom: 15px; margin-top: 0; font-size: 22px; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { text-align: left; padding: 15px; border-bottom: 1px solid #eee; }
+        th { background: #f8f8f8; color: var(--y-blue); text-transform: uppercase; font-size: 13px; }
+
+        .roster-tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+        .roster-btn { background: #fff; border: 1px solid #ddd; padding: 10px 20px; cursor: pointer; font-weight: bold; border-radius: 4px; font-size: 13px; }
+        .roster-btn.active { background: var(--y-blue); color: white; border-color: var(--y-blue); }
+
+        /* Main Link Button */
+        .btn-link { display: inline-block; padding: 14px 28px; background: var(--y-blue); color: white; text-decoration: none; border-radius: 2px; font-weight: bold; text-transform: uppercase; margin-top: 15px; font-size: 14px; }
+        .btn-link:hover { background: #004d88; }
+        
+        /* UNIFORM ROSTER BUTTONS */
+        .team-link { 
+            display: inline-block; 
+            width: 130px; 
+            text-align: center;
+            padding: 10px 15px; 
+            background: var(--y-blue); 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 2px; 
+            font-weight: bold; 
+            text-transform: uppercase; 
+            font-size: 13px;
+            white-space: nowrap; 
+            cursor: pointer;
+            border: none;
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        .team-link:hover { 
+            background: var(--y-yellow); 
+            color: var(--y-black); 
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="y logo.jpg" alt="YMCA Logo" class="logo-img">
+    <h1 class="portal-title">Youth Sports Portal</h1>
+</header>
+
+<div class="main-nav">
+    <button onclick="showCategory('in-town')" id="btn-in-town" class="active">In-Town Sports</button>
+    <button onclick="showCategory('jayme')" id="btn-jayme">Jayme's Classes</button>
+</div>
+
+<div id="sport-selector">
+    <button onclick="showSport('soccer')" id="btn-soccer" class="active">Soccer</button>
+    <button onclick="showSport('hoops')" id="btn-hoops">Basketball</button>
+</div>
+
+<div class="sub-nav">
+    <button onclick="showTab('schedule')" class="sub-btn active">Information & Schedule</button>
+    <button onclick="showTab('pictures')" id="tab-picture-btn" class="sub-btn">Picture Day</button>
+    <button onclick="showTab('coaches')" id="tab-roster-text" class="sub-btn">Coaches Corner / Rosters</button>
+</div>
+
+<div class="container">
+    
+    <div id="schedule" class="tab-content active">
+        <h2 id="sport-title">Soccer Game Schedule</h2>
+        <div id="schedule-box">
+            <p>Please use the link below to access the most recent schedules for the current season.</p>
+            <a href="Game%20Schedule%20-%20Spring%202026.pdf" id="download-link" class="btn-link" download>Download PDF Schedule</a>
+        </div>
+        <div id="jayme-info" style="display:none;">
+            <p>Welcome to classes lead by Jayme Roll. Our youth programs focus on skill development and teamwork.</p>
+            <div class="resource-card">
+                <h3>Upcoming Program Offerings</h3>
+                <ul>
+                    <li><strong>Volleyball</strong></li>
+                    <li><strong>Teen Classes</strong></li>
+                    <li><strong>Balls of Fun</strong></li>
+                    <li><strong>Tee Ball</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="pictures" class="tab-content">
+        <h2>Picture Day Details</h2>
+        <div class="resource-card">
+            <strong>Date:</strong> Friday, May 15th | <strong>Location:</strong> Queenax Room
+            <p>Please check with your coach for your specific team photo time. Packets will be available on-site.</p>
+        </div>
+    </div>
+
+    <div id="coaches" class="tab-content">
+        <h2 id="roster-title-text">Coaches Corner</h2>
+        <div class="resource-card" id="roster-section">
+            <h3 id="roster-header-text">Team Rosters</h3>
+            <div class="roster-tabs">
+                <button id="btn-senior" class="roster-btn active" onclick="showRoster('senior', this)">Senior Teams</button>
+                <button id="btn-junior" class="roster-btn" onclick="showRoster('junior', this)">Junior Teams</button>
+                <button id="btn-mini" class="roster-btn" onclick="showRoster('mini', this)">Mini Teams</button>
+            </div>
+            <div id="roster-display">
+                <table>
+                    <thead><tr><th>Team/Roster</th><th>Coaches</th><th>Number of Players</th></tr></thead>
+                    <tbody id="roster-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="resource-card" id="drill-section">
+            <h3>Drills & Resources</h3>
+            <ul id="drill-list"><li>Dribbling Basics</li><li>Passing & Movement</li></ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    function verifyAccess(pdfUrl, correctPassword) {
+        let userInput = prompt("Please enter the unique password for this team roster:");
+        if (userInput === correctPassword) {
+            window.open(pdfUrl, '_blank');
+        } else if (userInput !== null) {
+            alert("Incorrect password. Access denied.");
+        }
+    }
+
+    const rosterData = {
+        soccer: {
+            senior: [
+		{ name: "Sr Green", coach: "Martin Hernandez and Khalil Fields", players: "11 Players", url: "2026 Spring Soccer/Sr Green.pdf", pass: "SrGreen26" },
+                { name: "Sr Red", coach: "Dale Schmidt and Gina Green", players: "11 Players", url: "Sr Red.pdf", pass: "SrRed26" },
+                { name: "Sr Yellow", coach: "Beth Carnes", players: "12 Players", url: "2026 Spring Soccer/Sr Yellow.pdf", pass: "SrYellow26" },
+            ],
+            junior: [
+                { name: "Jr Green", coach: "Khalil Fields", players: "10 Players", url: "2026 Spring Soccer/Jr Green.pdf", pass: "JrGreen26" },
+                { name: "Jr White", coach: "Adam Kidd, Travis Rayala, and Matt Ipsen", players: "10 Players", url: "2026 Spring Soccer/Jr White.pdf", pass: "JrWhite26" },
+                { name: "Jr Yellow", coach: "Shanna Katze", players: "10 Players", url: "2026 Spring Soccer/Jr Yellow.pdf", pass: "JrYellow26" },
+                { name: "Jr Red", coach: "Sara Cederna and Chris Boling Jr.", players: "10 Players", url: "2026 Spring Soccer/Jr Red.pdf", pass: "JrRed26" },
+                { name: "Jr Blue", coach: "Larry Lajewski and Cassidee Thompson", players: "10 Players", url: "2026 Spring Soccer/Jr Blue.pdf", pass: "JrBlue26" },
+                { name: "Jr Black", coach: "James Haas and Erika Vroom", players: "10 Players", url: "2026 Spring Soccer/Jr Black.pdf", pass: "JrBlack26" },
+                { name: "Jr Purple", coach: "Cris Olson and Dave Walter", players: "10 Players", url: "2026 Spring Soccer/Jr Purple.pdf", pass: "JrPurple26" },
+                { name: "Jr Orange", coach: "Alyssa Lentscher", players: "10 Players", url: "2026 Spring Soccer/Jr Orange.pdf", pass: "JrOrange26" }
+            ],
+            mini: [
+                { name: "Mini Red", coach: "Byron Davis and Chandler Feeler", players: "8 Players", url: "2026 Spring Soccer/Mini Red.pdf", pass: "MiniRed26" },
+                { name: "Mini Yellow", coach: "Clinton Geier", players: "8 Players", url: "2026 Spring Soccer/Mini Yellow.pdf", pass: "MiniYellow26" },
+                { name: "Mini Green", coach: "Alyssa Martin", players: "8 Players", url: "2026 Spring Soccer/Mini Green.pdf", pass: "MiniGreen26" },
+                { name: "Mini Purple", coach: "Stephen Curry", players: "8 Players", url: "2026 Spring Soccer/Mini Purple.pdf", pass: "MiniPurple26" },
+                { name: "Mini Blue", coach: "Kassandra Garcia", players: "8 Players", url: "2026 Spring Soccer/Mini Blue.pdf", pass: "MiniBlue26" },
+                { name: "Mini Pink", coach: "Elaine Mueller", players: "8 Players", url: "2026 Spring Soccer/Mini Pink.pdf", pass: "MiniPink26" }
+            ]
+        },
+        hoops: {
+            senior: [
+                { name: "Sr Lakers", coach: "Miller", players: "10 Players", url: "Basketball/Sr%20Lakers.pdf", pass: "Lakers26" }
+            ],
+            junior: [
+                { name: "Warriors", coach: "Taylor", players: "9 Players", url: "Basketball/Junior-Warriors.pdf", pass: "Warriors26" }
+            ],
+            mini: [
+                { name: "Dribblers", coach: "White", players: "7 Players", url: "Basketball/Mini-Dribblers.pdf", pass: "Dribble26" }
+            ]
+        },
+        jayme: {
+            classes: [
+                { name: "Volleyball", coach: "Jayme Roll", detail: "Gymnasium" },
+                { name: "Teen Classes", coach: "Jayme Roll", detail: "Gymnasium" },
+                { name: "Balls of Fun", coach: "Jayme Roll", detail: "Gymnasium" },
+                { name: "Tee Ball", coach: "Jayme Roll", detail: "Gymnasium" }
+            ]
+        }
+    };
+
+    let currentSport = 'soccer';
+    let currentCategory = 'in-town';
+
+    function generateTableRow(item) {
+        if (currentCategory === 'jayme') {
+            return `<tr><td>${item.name}</td><td>${item.coach}</td><td>${item.detail}</td></tr>`;
+        }
+        return `<tr>
+            <td><button onclick="verifyAccess('${item.url}', '${item.pass}')" class="team-link">${item.name}</button></td>
+            <td>${item.coach}</td>
+            <td>${item.players}</td>
+        </tr>`;
+    }
+
+    function showCategory(category) {
+        currentCategory = category;
+        document.getElementById('btn-in-town').classList.toggle('active', category === 'in-town');
+        document.getElementById('btn-jayme').classList.toggle('active', category === 'jayme');
+
+        const sportSelector = document.getElementById('sport-selector');
+        const jaymeInfo = document.getElementById('jayme-info');
+        const scheduleBox = document.getElementById('schedule-box');
+        const drillSection = document.getElementById('drill-section');
+        const rosterHeader = document.getElementById('roster-header-text');
+        const picBtn = document.getElementById('tab-picture-btn');
+
+        if (category === 'in-town') {
+            sportSelector.style.display = 'flex';
+            jaymeInfo.style.display = 'none';
+            scheduleBox.style.display = 'block';
+            drillSection.style.display = 'block';
+            picBtn.style.display = 'inline-block';
+            document.getElementById('tab-roster-text').innerText = "Coaches Corner / Rosters";
+            rosterHeader.innerText = "Team Rosters";
+            showSport(currentSport);
+        } else {
+            sportSelector.style.display = 'none';
+            jaymeInfo.style.display = 'block';
+            scheduleBox.style.display = 'none';
+            drillSection.style.display = 'none';
+            picBtn.style.display = 'none';
+            document.getElementById('sport-title').innerText = "Jayme's Classes";
+            document.getElementById('tab-roster-text').innerText = "Class Rosters";
+            rosterHeader.innerText = "Classes and Rosters";
+            const html = rosterData.jayme.classes.map(item => generateTableRow(item)).join('');
+            document.getElementById('roster-body').innerHTML = html;
+            document.querySelector('.roster-tabs').style.display = 'none';
+            showTab('schedule');
+        }
+    }
+
+    function showSport(sport) {
+        currentSport = sport;
+        document.querySelector('.roster-tabs').style.display = 'flex';
+        document.getElementById('btn-soccer').classList.toggle('active', sport === 'soccer');
+        document.getElementById('btn-hoops').classList.toggle('active', sport === 'hoops');
+
+        const title = document.getElementById('sport-title');
+        const dlLink = document.getElementById('download-link');
+        
+        if(sport === 'soccer') {
+            title.innerText = "Soccer Game Schedule";
+            dlLink.setAttribute('href', 'Game%20Schedule%20-%20Spring%202026.pdf');
+        } else {
+            title.innerText = "Basketball Game Schedule";
+            dlLink.setAttribute('href', 'Basketball-Schedule.pdf');
+        }
+        showRoster('senior', document.getElementById('btn-senior')); 
+    }
+
+    function showRoster(level, btnElement) {
+        if(currentCategory === 'jayme') return;
+        const btns = document.getElementsByClassName('roster-btn');
+        for (let btn of btns) { btn.classList.remove('active'); }
+        btnElement.classList.add('active');
+        const html = rosterData[currentSport][level].map(item => generateTableRow(item)).join('');
+        document.getElementById('roster-body').innerHTML = html;
+    }
+
+    function showTab(tabId) {
+        const tabs = document.getElementsByClassName('tab-content');
+        for (let tab of tabs) { tab.classList.remove('active'); }
+        const buttons = document.getElementsByClassName('sub-btn');
+        for (let btn of buttons) { btn.classList.remove('active'); }
+        document.getElementById(tabId).classList.add('active');
+        const activeBtn = Array.from(buttons).find(b => b.getAttribute('onclick').includes(tabId));
+        if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    window.onload = () => { showCategory('in-town'); };
+</script>
+
+</body>
+</html>
