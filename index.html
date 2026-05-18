@@ -154,7 +154,7 @@
             <a href="Game%20Schedule%20-%20Spring%202026.pdf" id="download-link" class="btn-link" download>Download PDF Schedule</a>
         </div>
         <div id="jayme-info" style="display:none;">
-            <p>Welcome to classes lead by Jayme Roll. Our youth programs focus on skill development and teamwork.</p>
+            <p>Welcome to classes led by Jayme Roll. Our youth programs focus on skill development and teamwork.</p>
             <div class="resource-card">
                 <h3>Upcoming Program Offerings</h3>
                 <ul>
@@ -166,12 +166,11 @@
             </div>
         </div>
         <div id="adult-info" style="display:none;">
-            <p>Welcome to the YMCA Adult Sports Leagues portal. Check schedules, division rosters, and team details below.</p>
+            <p>Welcome to the YMCA Adult Sports Leagues portal. Check schedules, rosters, standings, and team details.</p>
             <div class="resource-card">
                 <h3>Current Active Leagues</h3>
                 <ul>
-                    <li><strong>Adult Soccer League</strong> (Spring/Summer 2026)</li>
-                    <li><strong>Adult Basketball League</strong> (Competitive & Rec Divisions)</li>
+                    <li><strong>Adult Basketball League</strong></li>
                 </ul>
             </div>
         </div>
@@ -222,28 +221,28 @@
     const rosterData = {
         soccer: {
             senior: [
-                { name: "Sr Yellow", coach: "Beth Carnes", players: "12 Players", url: "2026 Spring Soccer/Sr Yellow.pdf", pass: "Yellow26" },
-                { name: "Sr Red", coach: "Dale Schmidt and Gina Green", players: "11 Players", url: "Sr Red.pdf", pass: "Red26" },
-                { name: "Sr Blue", coach: "Jones", players: "11 Players", url: "2026 Spring Soccer/Sr Blue.pdf", pass: "Blue26" },
-                { name: "Sr Green", coach: "Martin Hernandez and Khalil Fields", players: "11 Players", url: "2026 Spring Soccer/Sr Green.pdf", pass: "Green26" }
+                { name: "Sr Yellow", coach: "Beth Carnes", players: "12 Players", url: "2026 Spring Soccer/Sr Yellow.pdf", pass: "SrYellow26" },
+                { name: "Sr Red", coach: "Dale Schmidt and Gina Green", players: "11 Players", url: "2026 Spring Soccer/Sr Red.pdf", pass: "SrRed26" },
+                { name: "Sr Blue", coach: "Jones", players: "11 Players", url: "2026 Spring Soccer/Sr Blue.pdf", pass: "SrBlue26" },
+                { name: "Sr Green", coach: "Martin Hernandez and Khalil Fields", players: "11 Players", url: "2026 Spring Soccer/Sr Green.pdf", pass: "SrGreen26" }
             ],
             junior: [
-                { name: "Jr Green", coach: "TBD", players: "10 Players", url: "2026 Spring Soccer/Jr Green.pdf", pass: "Green26" },
-                { name: "Jr White", coach: "TBD", players: "10 Players", url: "2026 Spring Soccer/Jr White.pdf", pass: "White26" },
-                { name: "Jr Yellow", coach: "TBD", players: "10 Players", url: "2026 Spring Soccer/Jr Yellow.pdf", pass: "Yellow26" },
-                { name: "Jr Red", coach: "TBD", players: "10 Players", url: "2026 Spring Soccer/Jr Red.pdf", pass: "Red26" },
-                { name: "Jr Blue", coach: "TBD", players: "10 Players", url: "2026 Spring Soccer/Jr Blue.pdf", pass: "Blue26" },
-                { name: "Jr Black", coach: "TBD", players: "10 Players", url: "2026 Spring Soccer/Jr Black.pdf", pass: "Black26" },
-                { name: "Jr Purple", coach: "TBD", players: "10 Players", url: "2026 Spring Soccer/Jr Purple.pdf", pass: "Purple26" },
-                { name: "Jr Orange", coach: "TBD", players: "10 Players", url: "2026 Spring Soccer/Jr Orange.pdf", pass: "Orange26" }
+                { name: "Jr Green", coach: "Khalil Fields", players: "10 Players", url: "2026 Spring Soccer/Jr Green.pdf", pass: "JrGreen26" },
+                { name: "Jr White", coach: "Adam Kidd, Matt Ispen, and Travis Rayala", players: "10 Players", url: "2026 Spring Soccer/Jr White.pdf", pass: "JrWhite26" },
+                { name: "Jr Yellow", coach: "Shanna Katze", players: "10 Players", url: "2026 Spring Soccer/Jr Yellow.pdf", pass: "JrYellow26" },
+                { name: "Jr Red", coach: "Sara Cederna and Ali Salzmann", players: "10 Players", url: "2026 Spring Soccer/Jr Red.pdf", pass: "JrRed26" },
+                { name: "Jr Blue", coach: "Larry Lajewski and Cassidee Thompson", players: "10 Players", url: "2026 Spring Soccer/Jr Blue.pdf", pass: "JrBlue26" },
+                { name: "Jr Black", coach: "James Haas and Erika Vroom", players: "10 Players", url: "2026 Spring Soccer/Jr Black.pdf", pass: "JrBlack26" },
+                { name: "Jr Purple", coach: "Cris Olson and Dave Walter", players: "10 Players", url: "2026 Spring Soccer/Jr Purple.pdf", pass: "JrPurple26" },
+                { name: "Jr Orange", coach: "Alyssa Lentscher", players: "10 Players", url: "2026 Spring Soccer/Jr Orange.pdf", pass: "JrOrange26" }
             ],
             mini: [
-                { name: "Mini Red", coach: "TBD", players: "8 Players", url: "2026 Spring Soccer/Mini Red.pdf", pass: "Red26" },
-                { name: "Mini Yellow", coach: "TBD", players: "8 Players", url: "2026 Spring Soccer/Mini Yellow.pdf", pass: "Yellow26" },
-                { name: "Mini Green", coach: "TBD", players: "8 Players", url: "2026 Spring Soccer/Mini Green.pdf", pass: "Green26" },
-                { name: "Mini Purple", coach: "TBD", players: "8 Players", url: "2026 Spring Soccer/Mini Purple.pdf", pass: "Purple26" },
-                { name: "Mini Blue", coach: "TBD", players: "8 Players", url: "2026 Spring Soccer/Mini Blue.pdf", pass: "Blue26" },
-                { name: "Mini Pink", coach: "TBD", players: "8 Players", url: "2026 Spring Soccer/Mini Pink.pdf", pass: "Pink26" }
+                { name: "Mini Red", coach: "TBD", players: "8 Players", url: "2026 Spring Soccer/Mini Red.pdf", pass: "MiniRed26" },
+                { name: "Mini Yellow", coach: "TBD", players: "8 Players", url: "2026 Spring Soccer/Mini Yellow.pdf", pass: "MiniYellow26" },
+                { name: "Mini Green", coach: "TBD", players: "8 Players", url: "2026 Spring Soccer/Mini Green.pdf", pass: "MiniGreen26" },
+                { name: "Mini Purple", coach: "TBD", players: "8 Players", url: "2026 Spring Soccer/Mini Purple.pdf", pass: "MiniPurple26" },
+                { name: "Mini Blue", coach: "TBD", players: "8 Players", url: "2026 Spring Soccer/Mini Blue.pdf", pass: "MiniBlue26" },
+                { name: "Mini Pink", coach: "TBD", players: "8 Players", url: "2026 Spring Soccer/Mini Pink.pdf", pass: "MiniPink26" }
             ]
         },
         hoops: {
@@ -262,12 +261,11 @@
                 { name: "Volleyball", coach: "Jayme Roll", detail: "Gymnasium" },
                 { name: "Teen Classes", coach: "Jayme Roll", detail: "Gymnasium" },
                 { name: "Balls of Fun", coach: "Jayme Roll", detail: "Gymnasium" },
-                { name: "Tee Ball", coach: "Jayme Roll", detail: "Gymnasium" }
+                { name: "Tee Ball", coach: "Jayme Roll", detail: "Baseball Field" }
             ]
         },
         adultSports: {
             leagues: [
-                { name: "Adult Soccer", coach: "League Captains", players: "8 Teams", url: "AdultSports/SoccerRosters.pdf", pass: "AdultSoccer26" },
                 { name: "Adult Hoops", coach: "League Captains", players: "6 Teams", url: "AdultSports/BasketballRosters.pdf", pass: "AdultHoops26" }
             ]
         }
